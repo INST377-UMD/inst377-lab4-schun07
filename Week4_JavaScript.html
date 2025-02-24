@@ -1,0 +1,91 @@
+<html>
+    <head>
+       <title> 
+        INST 377-Lab4
+       </title>
+       <body>
+
+        <h1 id = "header">INST Lab 4</h1>
+            <div class = "section">
+                <h2>Alert Me Section</h2>
+                <form name = "AlertMe" onsubmit = "return getAlert()">
+                    Name: <input type = "text" id = "name" placeholder = "Enter your name" required>
+                    <button type = "submit">Alert Me</button>
+                </form>
+            </div>
+
+            <div class = "section">
+                <h2>Change Color Section</h2>
+                <button onclick ="changeColor()">Change Color</button>
+            </div>
+
+            <div class = "section">
+                <h2>Text Tester Section</h2>
+                <form name = "TextTester" onsubmit = "return validateText()">
+                    <label for = "TextTesterInput">Text Tester: </label>
+                    <input type = "text" id = "text" placeholder = "Enter Text" required>
+                    <button type = "submit">Validate Text</button>
+                </form>
+            </div>
+
+            <div class = "section">
+                <h2>Add Text</h2>
+                <button onclick="addText()">Add Text</button>
+            </div>
+
+            <!--use test method in validateText to check for strings(used online google search and W3)--> 
+            <!--Create the boolean to toggle through the colors -->
+            <script>
+                function getAlert(){
+                    var name = document.getElementById("name").value;
+                    alert("Hi " + name + "!");
+                }
+
+                var boolean = false;
+                function changeColor(){
+                    if(boolean){
+                        document.body.style.backgroundColor = "blue";
+                    }else{
+                        document.body.style.backgroundColor = "red";
+                    }
+                    boolean = !boolean;
+                    console.log('Successfully changed Colors, color is now', boolean);
+                }
+
+                var validation = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+                function validateText(){
+                    var input = document.getElementById("text").value;
+                    if(validation.test(input)){
+                        console.log("Invalid input found");
+                        alert("How about....nah");
+                    } else{
+                        console.log("Valid input");
+                        return
+                    }
+                    return false;
+                }
+                function addText(){
+                    document.getElementById("header") += " Add Text";
+                }
+                
+            </script>
+
+
+<!--Referenced code from last Lab 3(CSS page)-->
+            <style>
+                body{
+                    background-color: blue;
+                }
+                .section{
+                    width:40%;
+                    background-color: cadetblue;
+                    padding: 10px;
+                    margin: 10px;
+                    border-style: solid;
+                    border-radius: 5px;
+                    border-color: black;
+                }
+            </style>
+       </body>
+    </head>
+</html>
